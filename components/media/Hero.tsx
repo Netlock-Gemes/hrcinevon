@@ -5,6 +5,7 @@ import { Play, Info, Star } from "lucide-react";
 import { Media } from "@/lib/types/media";
 import { SectionContainer } from "../layout/SectionContainer";
 import { FeaturedLogo } from "./FeaturedLogo";
+import { formatRuntime } from "@/lib/utils/formatRuntime";
 
 interface HeroProps {
   media: Media;
@@ -50,7 +51,8 @@ export function Hero({ media }: HeroProps) {
 
               {media.releaseInfo && <span>{media.releaseInfo}</span>}
 
-              {media.runtime && <span>{media.runtime}</span>}
+              {media.runtime && <span>{formatRuntime(media.runtime)}</span>}
+
               <div className="flex items-center flex-wrap gap-3">
                 {media.genres?.map((genre) => (
                   <span

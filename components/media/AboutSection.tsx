@@ -1,5 +1,6 @@
 import { Media } from "@/lib/types/media";
 import { SectionContainer } from "../layout/SectionContainer";
+import { formatRuntime } from "@/lib/utils/formatRuntime";
 
 interface AboutSectionProps {
   media: Media;
@@ -44,7 +45,7 @@ export function AboutSection({ media }: AboutSectionProps) {
 
           <DetailRow label="Release" value={media.releaseInfo} />
 
-          <DetailRow label="Runtime" value={media.runtime} />
+          <DetailRow label="Runtime" value={formatRuntime(media.runtime)} />
 
           <DetailRow label="Genres" value={media.genres?.join(", ")} />
         </div>

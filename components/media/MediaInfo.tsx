@@ -4,6 +4,7 @@ import { Media } from "@/lib/types/media";
 import { SectionContainer } from "../layout/SectionContainer";
 import { FeaturedLogo } from "./FeaturedLogo";
 import Link from "next/link";
+import { formatRuntime } from "@/lib/utils/formatRuntime";
 
 interface MediaInfoProps {
   media: Media;
@@ -16,7 +17,7 @@ export function MediaInfo({ media }: MediaInfoProps) {
         <FeaturedLogo
           logo={media.logo}
           title={media.name}
-          className="mb-8 max-h-40"
+          className="max-h-40"
         />
 
         <div className="flex flex-wrap gap-3 text-sm items-center">
@@ -29,7 +30,8 @@ export function MediaInfo({ media }: MediaInfoProps) {
 
           {media.releaseInfo && <span>{media.releaseInfo}</span>}
 
-          {media.runtime && <span>{media.runtime}</span>}
+          {media.runtime && <span>{formatRuntime(media.runtime)}</span>}
+
           <div className="flex items-center flex-wrap gap-3">
             {media.genres?.map((genre) => (
               <span key={genre} className="rounded-full bg-white/10 px-3 py-1">

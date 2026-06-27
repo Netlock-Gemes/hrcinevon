@@ -7,6 +7,7 @@ import { FeaturedLogo } from "@/components/media/FeaturedLogo";
 import { Media } from "@/lib/types/media";
 
 import { usePlayerContext } from "./PlayerContext";
+import { formatRuntime } from "@/lib/utils/formatRuntime";
 
 export function MediaOverlay({ media }: { media: Media }) {
   const { playing } = usePlayerContext();
@@ -17,7 +18,7 @@ export function MediaOverlay({ media }: { media: Media }) {
       <FeaturedLogo
         logo={media.logo}
         title={media.name}
-        className="mb-4"
+        className="mb-4 max-h-20 md:max-h-30"
       />
 
       <div className="mt-3 mb-4 flex flex-wrap gap-3 items-center">
@@ -31,7 +32,7 @@ export function MediaOverlay({ media }: { media: Media }) {
 
         {media.releaseInfo && <span>{media.releaseInfo}</span>}
 
-        {media.runtime && <span>{media.runtime}</span>}
+        {media.runtime && <span>{formatRuntime(media.runtime)}</span>}
 
         {media.genres?.map((genre) => (
           <span
@@ -43,7 +44,7 @@ export function MediaOverlay({ media }: { media: Media }) {
         ))}
       </div>
 
-      <p className="line-clamp-2 text-base leading-snug text-white/80">
+      <p className="line-clamp-2 text-sm md:text-base leading-snug text-white/80">
         {media.description}
       </p>
     </div>
