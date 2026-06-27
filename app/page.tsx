@@ -1,12 +1,12 @@
-import { FloatingNavbar } from "@/components/FloatingNavbar";
-import { Hero } from "@/components/Hero";
-import { MediaRow } from "@/components/MediaRow";
+import { FloatingNavbar } from "@/components/layout/FloatingNavbar";
+import { Hero } from "@/components/media/Hero";
+import { MediaRow } from "@/components/media/MediaRow";
 import { getHomeData } from "@/lib/services/media";
 
 export default async function HomePage() {
   const data = await getHomeData();
 
-  const featured = data.popularMovies[3] ?? data.latestMovies[0];
+  const featured = data.latestMovies[0] ?? data.popularMovies[0];
 
   return (
     <>

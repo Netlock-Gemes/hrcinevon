@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 interface FeaturedLogoProps {
   logo?: string;
   title: string;
@@ -18,8 +19,8 @@ export function FeaturedLogo({ logo, title }: FeaturedLogoProps) {
         src={logo}
         alt={title}
         className="
-          max-h-[160px]
-          max-w-[600px]
+          max-h-40
+          max-w-150
           object-contain
           object-left
         "

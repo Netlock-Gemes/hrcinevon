@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { Play, Info } from "lucide-react";
 import { Media } from "@/lib/types/media";
+import { SectionContainer } from "../layout/SectionContainer";
 import { FeaturedLogo } from "./FeaturedLogo";
-import { SectionContainer } from "./SectionContainer";
 
 interface HeroProps {
   media: Media;

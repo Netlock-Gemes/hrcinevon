@@ -1,7 +1,7 @@
 import { ChevronRight } from "lucide-react";
 
 import { Media } from "@/lib/types/media";
-import { SectionContainer } from "./SectionContainer";
+import { SectionContainer } from "../layout/SectionContainer";
 import { MediaCarousel } from "./MediaCarousel";
 
 interface MediaRowProps {

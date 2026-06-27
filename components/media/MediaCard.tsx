@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { Star } from "lucide-react";
 
@@ -11,7 +12,7 @@ export function MediaCard({ media }: MediaCardProps) {
   return (
     <Link
       href={`/${media.type}/${media.id}`}
-      className="group relative block flex-shrink-0"
+      className="group relative block shrink-0"
     >
       <div className="relative overflow-hidden rounded-2xl border border-white/5 bg-card transition-all duration-300 group-hover:border-white/15">
         
@@ -20,9 +21,9 @@ export function MediaCard({ media }: MediaCardProps) {
           src={media.poster}
           alt={media.name}
           className="
-            aspect-[2/3]
+            aspect-2/3
             h-auto
-            w-[180px]
+            w-45
             object-cover
             transition-transform
             duration-300
@@ -30,7 +31,7 @@ export function MediaCard({ media }: MediaCardProps) {
           "
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent opacity-80" />
 
         <div className="absolute inset-x-0 bottom-0 p-3">
           <h3 className="line-clamp-1 text-sm font-semibold">

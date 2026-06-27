@@ -43,3 +43,14 @@ export async function getStreams(
 ): Promise<StreamResponse> {
   return fetcher<StreamResponse>(`${API_BASE_URL}/stream/${type}/${id}.json`);
 }
+
+export async function searchCatalog(
+  type: MediaType,
+  query: string,
+): Promise<CatalogResponse> {
+  const url = `${API_BASE_URL}/catalog/${type}/top_${
+    type === "movie" ? "movies" : "series"
+  }.json/search=${encodeURIComponent(query)}`;
+
+  return fetcher<CatalogResponse>(url);
+}

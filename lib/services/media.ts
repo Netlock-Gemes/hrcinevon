@@ -1,4 +1,4 @@
-import { getCatalog, getMeta, getStreams } from "../api";
+import { getCatalog, getMeta, getStreams, searchCatalog } from "../api";
 import { CATALOGS } from "../constants";
 import { MediaType } from "../types/media";
 
@@ -25,4 +25,13 @@ export async function getMediaDetails(type: MediaType, id: string) {
 
 export async function getMediaStreams(type: MediaType, id: string) {
   return getStreams(type, id);
+}
+
+export async function searchMedia(query: string) {
+  const [movies, series] = await Promise.all([
+    searchCatalog("movie", query),
+    searchCatalog("series", query),
+  ]);
+
+  return [...movies.metas, ...series.metas];
 }
