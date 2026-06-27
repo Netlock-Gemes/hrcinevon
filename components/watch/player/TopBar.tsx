@@ -10,55 +10,33 @@ interface Props {
 export function TopBar({ title }: Props) {
   const router = useRouter();
 
+  const iconButton =
+    "flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200 hover:bg-white/10 hover:scale-110 active:scale-95";
+
   return (
-    <div
-      className="
-      absolute
-      top-0
-      left-0
-      right-0
-      z-30
-      flex
-      items-center
-      justify-between
-      bg-linear-to-b
-      from-black/90
-      via-black/40
-      to-transparent
-      px-8
-      pt-8
-      pb-20
-    "
-    >
-      <button
-        onClick={() => router.back()}
-        className="
-        flex
-        h-12
-        w-12
-        items-center
-        justify-center
-        rounded-full
-        bg-black/40
-        backdrop-blur-xl
-        transition
-        hover:bg-black/60
-      "
-      >
-        <ArrowLeft className="size-6" />
-      </button>
+    <div className="absolute inset-x-0 top-0 z-30 bg-linear-to-b from-black/50 via-black/30 to-transparent px-8 pt-6 pb-0">
+      <div className="flex items-center justify-between">
+        {/* Left */}
+        <button
+          className={iconButton}
+          onClick={(e) => {
+            e.stopPropagation();
+            router.back();
+          }}
+        >
+          <ArrowLeft className="size-5" />
+        </button>
 
-      <h1
-        className="
-        text-lg
-        font-semibold
-        tracking-wide
-      "
-      >
-        {title}
-      </h1>
+        {/* Center */}
+        <div className="pointer-events-none flex-1 px-10 text-center">
+          <h1 className="truncate text-base font-medium tracking-wide text-white/90">
+            {title}
+          </h1>
+        </div>
 
-      <div className="w-12" />
+        {/* Right spacer */}
+        <div className="h-10 w-10 shrink-0" />
+      </div>
     </div>
   );
 }

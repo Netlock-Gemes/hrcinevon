@@ -11,6 +11,8 @@ export function usePlayer() {
 
   const [playing, setPlaying] = useState(false);
 
+  const [speed, setSpeed] = useState(1);
+
   const [showUI, setShowUI] = useState(true);
 
   const [loading, setLoading] = useState(true);
@@ -21,6 +23,16 @@ export function usePlayer() {
 
   const [volume, setVolume] = useState(1);
 
+  function changeSpeed(value: number) {
+    const video = videoRef.current;
+
+    if (!video) return;
+
+    video.playbackRate = value;
+
+    setSpeed(value);
+  }
+
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       const video = videoRef.current;
@@ -30,31 +42,25 @@ export function usePlayer() {
       switch (e.code) {
         case "Space":
           e.preventDefault();
-
           togglePlay();
-
-          break;
+          return;
 
         case "ArrowLeft":
           seek(-10);
-
           break;
 
         case "ArrowRight":
           seek(10);
-
           break;
 
         case "KeyM":
           video.muted = !video.muted;
-
           break;
 
         case "KeyF":
           if (containerRef.current) {
             toggleFullscreen(containerRef.current);
           }
-
           break;
       }
 
@@ -64,7 +70,7 @@ export function usePlayer() {
     window.addEventListener("keydown", onKeyDown);
 
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [resetHideTimer]);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -118,22 +124,29 @@ export function usePlayer() {
     }
 
     hideTimer.current = setTimeout(() => {
-      if (playing) {
+      const video = videoRef.current;
+
+      if (!video) return;
+
+      if (!video.paused) {
         setShowUI(false);
       }
     }, 2500);
   }
 
-  function togglePlay() {
+  async function togglePlay() {
     const video = videoRef.current;
-
     if (!video) return;
 
     if (video.paused) {
-      video.play();
+      try {
+        await video.play();
+      } catch {}
     } else {
       video.pause();
     }
+
+    resetHideTimer();
   }
 
   function seek(seconds: number) {
@@ -155,7 +168,7 @@ export function usePlayer() {
   }
 
   async function toggleFullscreen(element: HTMLElement) {
-    if (containerRef.current!) {
+    if (!document.fullscreenElement) {
       await element.requestFullscreen();
     } else {
       await document.exitFullscreen();
@@ -188,5 +201,9 @@ export function usePlayer() {
     changeVolume,
 
     toggleFullscreen,
+
+    speed,
+
+    changeSpeed,
   };
 }

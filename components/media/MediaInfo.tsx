@@ -13,7 +13,7 @@ export function MediaInfo({ media }: MediaInfoProps) {
   return (
     <SectionContainer className="-mt-72 relative z-20 pb-20">
       <div className="max-w-3xl">
-        <FeaturedLogo logo={media.logo} title={media.name} />
+        <FeaturedLogo logo={media.logo} title={media.name} className="mb-8" />
 
         <div className="mb-5 flex flex-wrap gap-3 text-sm">
           {media.imdbRating && (
@@ -40,7 +40,7 @@ export function MediaInfo({ media }: MediaInfoProps) {
 
         <div className="flex gap-4">
           <Link
-            href={`/watch/${media.type}/${media.id}`}
+            href={`/${media.type}/${media.id}/watch`}
             className="flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-semibold text-black transition hover:scale-105 cursor-pointer"
           >
             <Play className="size-5 fill-current" />
