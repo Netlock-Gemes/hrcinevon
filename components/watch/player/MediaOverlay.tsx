@@ -17,7 +17,6 @@ export function MediaOverlay({ media }: { media: Media }) {
       <FeaturedLogo
         logo={media.logo}
         title={media.name}
-        isSmall
         className="mb-4"
       />
 

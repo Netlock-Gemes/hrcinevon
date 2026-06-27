@@ -20,8 +20,7 @@ export function FloatingNavbar() {
   return (
     <header
       className={`
-        fixed top-0 z-50 w-full
-        transition-all duration-500
+        fixed top-0 z-50 w-full transition-all duration-500
         ${
           scrolled
             ? "border-b border-white/5 bg-black/70 backdrop-blur-xl"
@@ -31,7 +30,9 @@ export function FloatingNavbar() {
     >
       <div className="mx-auto flex h-16 max-w-[1800px] items-center justify-between px-5 sm:px-6 lg:px-12">
         <div className="flex items-center gap-10">
-          <h1 className="text-xl font-bold">HRCinevon</h1>
+          <h1 className="text-xl font-bold">
+            <span className="text-[#fbbf24]">HR</span>Cinevon
+          </h1>
 
           <nav className="hidden gap-6 md:flex">
             <button className="text-sm text-white">Home</button>

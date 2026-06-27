@@ -11,14 +11,18 @@ interface MediaInfoProps {
 
 export function MediaInfo({ media }: MediaInfoProps) {
   return (
-    <SectionContainer className="-mt-72 relative z-20 pb-20">
-      <div className="max-w-3xl">
-        <FeaturedLogo logo={media.logo} title={media.name} className="mb-8" />
+    <SectionContainer className="absolute bottom-0 z-20 pb-20">
+      <div className="max-w-2xl space-y-5">
+        <FeaturedLogo
+          logo={media.logo}
+          title={media.name}
+          className="mb-8 max-h-40"
+        />
 
-        <div className="mb-5 flex flex-wrap gap-3 text-sm">
+        <div className="flex flex-wrap gap-3 text-sm items-center">
           {media.imdbRating && (
-            <span className="rounded-full bg-yellow-500/15 px-3 py-1 text-yellow-300">
-              <Star className="mr-1 inline size-3 fill-current" />
+            <span className="flex items-center gap-1 rounded-full border border-yellow-500/25 bg-yellow-500/10 px-3 py-1 text-yellow-300">
+              <Star className="size-3.5 fill-current" />
               {media.imdbRating}
             </span>
           )}
@@ -26,29 +30,30 @@ export function MediaInfo({ media }: MediaInfoProps) {
           {media.releaseInfo && <span>{media.releaseInfo}</span>}
 
           {media.runtime && <span>{media.runtime}</span>}
-
-          {media.genres?.map((genre) => (
-            <span key={genre} className="rounded-full bg-white/10 px-3 py-1">
-              {genre}
-            </span>
-          ))}
+          <div className="flex items-center flex-wrap gap-3">
+            {media.genres?.map((genre) => (
+              <span key={genre} className="rounded-full bg-white/10 px-3 py-1">
+                {genre}
+              </span>
+            ))}
+          </div>
         </div>
 
-        <p className="mb-8 text-lg leading-8 text-white/80">
+        <p className="max-w-xl text-sm md:text-base font-semibold leading-snug line-clamp-3 text-white/85">
           {media.description}
         </p>
 
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           <Link
             href={`/${media.type}/${media.id}/watch`}
-            className="flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-semibold text-black transition hover:scale-105 cursor-pointer"
+            className="inline-flex h-12 items-center gap-2 rounded-full bg-white px-6 text-sm md:text-base font-semibold text-black transition-all duration-300 hover:scale-[1.03] hover:bg-white/90"
           >
-            <Play className="size-5 fill-current" />
-            Play
+            <Play className="size-4 md:size-5 fill-current" />
+            Watch Now
           </Link>
 
-          <button className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 backdrop-blur-md transition hover:bg-white/10">
-            <Plus className="size-5" />
+          <button className="inline-flex h-12 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 text-sm md:text-base font-medium text-white backdrop-blur-xl transition-all duration-300 hover:bg-white/10 cursor-pointer">
+            <Plus className="size-4 md:size-5 text-[#fbbf24]" />
             My List
           </button>
         </div>

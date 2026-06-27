@@ -24,55 +24,21 @@ export function MediaCarousel({ items }: MediaCarouselProps) {
     <div className="group/row relative">
       <button
         onClick={() => scroll(-1)}
-        className="
-          absolute
-          left-4
-          top-1/2
-          z-20
-          hidden
-          -translate-y-1/2
-          rounded-full
-          bg-black/70
-          p-2
-          opacity-0
-          transition
-          group-hover/row:opacity-100
-          lg:block
-        "
+        className="absolute left-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-black/70 p-2 opacity-0 transition group-hover/row:opacity-100 lg:block cursor-pointer"
       >
         <ChevronLeft />
       </button>
 
       <button
         onClick={() => scroll(1)}
-        className="
-          absolute
-          right-4
-          top-1/2
-          z-20
-          hidden
-          -translate-y-1/2
-          rounded-full
-          bg-black/70
-          p-2
-          opacity-0
-          transition
-          group-hover/row:opacity-100
-          lg:block
-        "
+        className="absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-black/70 p-2 opacity-0 transition group-hover/row:opacity-100 lg:block cursor-pointer"
       >
         <ChevronRight />
       </button>
 
       <div
         ref={ref}
-        className="
-          flex
-          gap-4
-          overflow-x-auto
-          scroll-smooth
-          scrollbar-none
-        "
+        className="flex gap-2 md:gap-4 overflow-x-auto scroll-smooth scrollbar-none"
       >
         {items.map((item) => (
           <MediaCard key={item.id} media={item} />

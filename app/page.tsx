@@ -13,7 +13,7 @@ export default async function HomePage() {
       {/* <Navbar /> */}
       <FloatingNavbar />
       <Hero media={featured} />
-      <main className="-mt-24 relative z-20">
+      <main className="relative z-20 -mt-20 space-y-16 pb-24 max-w-[1800px] px-5 sm:px-6 lg:px-12 flex flex-col mx-auto">
         <MediaRow title="Popular Movies" items={data.popularMovies} />
         <MediaRow title="Latest Movies" items={data.latestMovies} />
         <MediaRow title="Popular Series" items={data.popularSeries} />

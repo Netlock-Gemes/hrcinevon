@@ -22,26 +22,13 @@ export function SearchCommand({
       onOpenChange={onOpenChange}
     >
       <DialogContent
-        className="
-          border-white/10
-          bg-black/90
-          backdrop-blur-xl
-          sm:max-w-2xl
-        "
+        className="border-white/10 bg-black/90 backdrop-blur-xl sm:max-w-2xl"
+        showCloseButton={false}
       >
         <div className="space-y-4">
           <input
             placeholder="Search movies and series..."
-            className="
-              w-full
-              rounded-xl
-              border
-              border-white/10
-              bg-white/5
-              px-4
-              py-3
-              outline-none
-            "
+            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 outline-none"
           />
 
           <div className="text-sm text-white/50">
