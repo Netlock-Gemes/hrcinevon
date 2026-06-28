@@ -1,5 +1,23 @@
 export type MediaType = "movie" | "series";
 
+export interface Video {
+  id: string;
+
+  title: string;
+
+  season: number;
+
+  episode: number;
+
+  overview: string;
+
+  released: string;
+
+  thumbnail: string;
+
+  imdb_id: string;
+}
+
 export interface Media {
   id: string;
   type: MediaType;
@@ -27,6 +45,8 @@ export interface Media {
   runtime?: string;
 
   released?: string;
+
+  videos?: Video[];
 }
 
 export interface CatalogResponse {

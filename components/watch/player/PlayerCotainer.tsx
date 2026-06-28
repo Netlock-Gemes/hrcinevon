@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { useStream } from "@/lib/hooks/use-stream";
 import { Media, Stream } from "@/lib/types/media";
@@ -11,29 +11,32 @@ import { Player } from "./Player";
 
 interface Props {
   media: Media;
+  streamId?: string;
 }
 
-export function PlayerContainer({ media }: Props) {
-  const { streams, loading, error } = useStream(media.type, media.id);
+export function PlayerContainer({ media, streamId }: Props) {
+  const { streams, loading, error } = useStream(
+    media.type,
+    streamId ?? media.id,
+  );
 
-  const [stream, setStream] = useState<Stream>();
+  const [stream, setStream] = useState<Stream | undefined>();
 
-  useEffect(() => {
-    if (streams.length) {
-      setStream(streams[0]);
-    }
-  }, [streams]);
+  const currentStream =
+    stream && streams.some((s) => s.url === stream.url) ? stream : streams[0];
 
   if (loading) return <LoadingState />;
 
   if (error) return <ErrorState message={error} />;
 
-  if (!stream) return <ErrorState message="No stream available." />;
+  if (!currentStream) {
+    return <ErrorState message="No stream available." />;
+  }
 
   return (
     <Player
       media={media}
-      stream={stream}
+      stream={currentStream}
       streams={streams}
       onStreamChange={setStream}
     />
